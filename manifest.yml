@@ -1,0 +1,15 @@
+applications:
+  - name: portal-cf-graphql-cdm-gateway
+    stack: cflinuxfs3
+    command: npm run start
+    buildpacks:
+      - https://github.com/cloudfoundry/nodejs-buildpack.git#v1.7.44
+    memory: 512M
+    instances: 1
+    routes: 
+      - route: https://portal-service-ytpi511774p.cfapps.sap.hana.ondemand.com/cep
+    env:
+      DB_INSTANCE_NAME: portal-postgresql-db-rt
+      DB_INSTANCE_NAME_LABLE: postgresql-db
+      CORE_SERVICE_URL: https://portal-service-ytpi511774p.cfapps.sap.hana.ondemand.com/core/graphql
+      RUNTIME_SERVICE_URL: https://portal-service-ytpi511774p.cfapps.sap.hana.ondemand.com/runtime/graphql

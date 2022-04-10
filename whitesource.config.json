@@ -1,0 +1,12 @@
+{
+  "apiKey": "6971b2eec2d3420bad0caf173ec629f6a3c7d3ba63f3445ab99ffdbf1acfb1d0",
+  "userKey": "b05f86a3f36c41698fee28a02c2900d6f3feb5c6db864e888e06d3f2d4971e1e",
+  "productName": "SHC - FLP CLOUD CF",
+  "devDep": "false",
+  "checkPolicies": "true",
+  "productVer": "0.0.1",
+  "projectName" : "portal-cf-graphql-cdm-gateway",
+  "projectVer" : "0.0.1",
+  "forceUpdate": true,
+  "ignoreNpmLsErrors": true
+}

@@ -1,0 +1,16 @@
+context: (( &temporary ( merge ) ))
+applications:
+  - name: portal-cf-graphql-cdm-gateway
+    stack: cflinuxfs3
+    memory: (( valid(.context.config.cf.memory) -and .context.config.cf.memory != "default" ? .context.config.cf.memory :"1024M" ))
+    instances: (( valid(.context.config.cf.instances) ? .context.config.cf.instances :3 ))
+    env: (( env("LANDSCAPE_ENVIRONMENT") == "dev" ? common_env dev_env :common_env prod_env ))
+    routes:
+      - route: (( "portal-service" env("HOST_SUFFIX") "." env("DOMAIN") "/cep/graphql" ))
+    buildpacks:
+      - (( env("LANDSCAPE_TYPE") == "ali" ? "nodejs_buildpack" :"https://github.com/cloudfoundry/nodejs-buildpack.git#v1.7.44" ))
+    env:
+      DB_INSTANCE_NAME: portal-postgresql-db-rt
+      DB_INSTANCE_NAME_LABLE: postgresql-db
+      CORE_SERVICE_URL: (( "portal-service" env("HOST_SUFFIX") "." env("DOMAIN") "/core/graphql" ))
+      RUNTIME_SERVICE_URL: (( "portal-service" env("HOST_SUFFIX") "." env("DOMAIN") "/runtime/graphql" )) 

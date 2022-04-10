@@ -1,0 +1,5 @@
+{
+  "CORE_SERVICE_URL": "http://127.0.0.1:4001/graphql",
+  "RUNTIME_SERVICE_URL": "http://127.0.0.1:4000/graphql/gateway",
+  "PORT":4003
+}
